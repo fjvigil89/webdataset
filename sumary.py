@@ -114,8 +114,11 @@ def encode_dataset(dataloader, output_dir, save_frequency):
             print(f"No images/captions in batch...")
             continue
         images = shard(images)
-        encoded = p_encode(images, vqgan_params)
-        encoded = encoded.reshape(-1, encoded.shape[-1])
+        # encoded = p_encode(images, vqgan_params)
+        # encoded = encoded.reshape(-1, encoded.shape[-1])
+        print("antes")
+        encoded = images.reshape(-1, images.shape[-1])
+        print("despues")
         all_captions.extend(captions)
         all_encoding.extend(encoded.tolist())
 
